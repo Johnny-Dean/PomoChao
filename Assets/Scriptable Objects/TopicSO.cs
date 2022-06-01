@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class TopicSO : ScriptableObject
+public class TopicSO : ScriptableObject, ICurrTopicObserver
 {
-    private string[] _subtopics;
-    [SerializeField]
-    public string[] Subtopics
-    {
-        get { return Subtopics; }
-        set { Subtopics = value; }
-    }
-    
-    private string _name;
-    [SerializeField]
-    public string Name
-    {
-        get { return Name; }
-        set { Name = value; }
-    }
-    
+        public string topic_name;
+        public List<string> tasks;
+        public float time_studied;
+
+        public void Update(Topic new_topic){
+                topic_name = new_topic.name;
+                tasks = new_topic.GetTasks();
+        }
 }

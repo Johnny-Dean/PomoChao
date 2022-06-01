@@ -8,7 +8,5 @@ public class CurrentTopicTrigger : MonoBehaviour
     void OnMouseDown()
     {
         CurrentTopicSystem.Show(gameObject);
-        transform.position = new Vector2(4, 3);
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 }

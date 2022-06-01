@@ -15,4 +15,5 @@ public class CurrentTopicSystem : MonoBehaviour
     public static void Show(GameObject new_curr_topic){
         current_topic_system.CurrentTopic.SetTopic(new_curr_topic);
     }
+
 }

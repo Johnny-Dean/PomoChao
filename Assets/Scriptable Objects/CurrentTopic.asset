@@ -10,5 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1400d25103d979a4d8fa80099a5954c1, type: 3}
-  m_Name: CurrentTopic
+  m_Name: asdf
   m_EditorClassIdentifier: 
+  topic_name: 
+  tasks: []
+  time_studied: 0

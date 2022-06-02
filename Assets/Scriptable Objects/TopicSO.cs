@@ -9,7 +9,7 @@ public class TopicSO : ScriptableObject, ICurrTopicObserver
         public List<string> tasks;
         public float time_studied;
 
-        public void Update(Topic new_topic){
+        public void CurrentTopicUpdate(Topic new_topic){
                 topic_name = new_topic.name;
                 tasks = new_topic.GetTasks();
         }

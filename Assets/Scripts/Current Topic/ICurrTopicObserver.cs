@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICurrTopicObserver
 {
-    void Update(Topic current_topic);
+    void CurrentTopicUpdate(Topic current_topic);
 }

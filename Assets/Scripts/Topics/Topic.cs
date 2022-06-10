@@ -2,28 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// We have an interface and on save we save everything that implements the save interface and save those objects
-// The problem is do I need to have something that implements an array of these objects
 [Serializable]
 public class Topic : MonoBehaviour
 {
-        [SerializeField]
-        private string topic_name;
-        [SerializeField]
-        private List<string> tasks;
-        [SerializeField]
-        private float time_studied;
+    // these should be private probably
+        public new string name   {get; private set;}
+        // public to add to
+        public List<string> tasks;
+        public float time_studied  {get; private set;}
 
         public void SetName(string new_name){
-            topic_name = new_name;
+            name = new_name;
             gameObject.name = new_name;
         }
 
-        public void AddTask(string task_to_add){
-            tasks.Add(task_to_add);
-        }
-
-        public List<string> GetTasks(){
-            return tasks;
+        public void SetTasks(List<string> new_tasks){
+            tasks = new_tasks;
         }
 }

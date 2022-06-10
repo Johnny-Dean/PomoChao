@@ -2,27 +2,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class CurrentTopic : MonoBehaviour
 {
     public TextMeshProUGUI topic_name;
-    // is public static void bad here???
-    private GameObject current_topic;
+    public GameObject current_topic;
     private List<ICurrTopicObserver> curr_topic_observers;
-
-    void Start(){
+    [SerializeField]
+    private TopicSO current_topic_SO;
+    [SerializeField]
+    private GameObject start_studying_btn;
+    void Awake(){
        curr_topic_observers = FindAllObservers();
     }
     public void SetTopic(GameObject new_current_topic){
-        // If there is a current topic tur its Physics back on
+        if (!start_studying_btn.activeInHierarchy){
+            start_studying_btn.SetActive(true);
+        }
         if (current_topic != null){
             current_topic.GetComponent<Rigidbody2D>().isKinematic = false;
         }
             current_topic = new_current_topic;
             current_topic.transform.position = FindCurrentTopicTextPosition();
             FreezeCurrentTopic();
-            UpdateObservers();
+            UpdateTopicObservers();
     }
-    private void UpdateObservers(){
+    private void UpdateTopicObservers(){
         Topic new_topic = current_topic.GetComponent<Topic>();
         foreach (ICurrTopicObserver observer in curr_topic_observers)
         {
@@ -44,5 +49,10 @@ public class CurrentTopic : MonoBehaviour
         Rigidbody2D rigid_body = current_topic.GetComponent<Rigidbody2D>();
         rigid_body.velocity = Vector3.zero;
         rigid_body.isKinematic = true;
+    }
+    public void WriteToScriptableObject(){
+        Topic new_current_topic = current_topic.GetComponent<Topic>();
+        current_topic_SO.name= new_current_topic.name;
+        current_topic_SO.tasks = new_current_topic.tasks;
     }
 }

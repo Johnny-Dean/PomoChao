@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CurrentTopicSystem : MonoBehaviour
@@ -7,7 +5,6 @@ public class CurrentTopicSystem : MonoBehaviour
 
     public static CurrentTopicSystem current_topic_system;
     public CurrentTopic CurrentTopic;
-
     public void Awake (){
         current_topic_system = this;
     }

@@ -5,19 +5,15 @@ using UnityEngine;
 public class GenerateTasks : MonoBehaviour
 {
     // Start is called before the first frame update
-    public TopicSO current_focus_topic;
-    public List<string> tasks;
+    public TopicSO current_topic_SO;
     public RectTransform ScrollPanel;
     void Start()
     {
-        // should this be a function (current_focus_topic.tasks part)
-        tasks = current_focus_topic.tasks;
         GenerateTaskButtons();    
-
     }
 
     public void GenerateTaskButtons(){
-        foreach(string task in tasks){
+        foreach(string task in current_topic_SO.tasks){
             Debug.Log(task);
         }
     }
